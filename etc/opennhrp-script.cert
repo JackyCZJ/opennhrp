@@ -37,7 +37,7 @@ peer-register)
 		(echo "$CERT" | grep "^NET=" | cut -b 5-) | while read NET; do
 			vtysh -d bgpd -c "configure terminal" \
 				-c "ip prefix-list net-$AS-in seq $SEQ permit $NET"
-			SEQ=$(($SEQ+5)
+			SEQ=$(($SEQ+5))
 		done
 	) 200>/var/lock/opennhrp-script.lock
 	;;
